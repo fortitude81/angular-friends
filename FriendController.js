@@ -1,8 +1,8 @@
 angular.module('angularFriends')  // go find this module we arleady made and do something
  .controller('FriendController', function( $scope ){   //create a FriendController
  	
- 	$scope.attribute;
- 	$scope.order; 
+ 	$scope.attributes;  // create new variable to sort on
+ 	$scope.order; 		// create new variable for boolean for ascending/descending
 
  	$scope.friends = [		
 	  {

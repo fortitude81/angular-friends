@@ -17,21 +17,21 @@
       
         <!-- STEP 5: Get rid of the one above when you uncomment the below-->
         
-        <input class="form-control" placeholder="Search Name" ng-model="searchTerm.name">  <!-- add ng-model -->
+        <input class="form-control" placeholder="Search Name" ng-model="searchTerm.name">  <!-- add ng-model  with specific filter for name-->
         
-                                                                                                                <!--cant narrow down location -->
-        <input class="form-control" placeholder="Search Location" ng-model="searchTerm.current_location.city", "searchTerm.current_location.state">
+                                                                                                                
+        <input class="form-control" placeholder="Search Location" ng-model="searchTerm.current_location.name"> <!--specific for location -->
          
 
-        <select class="input-medium">
-          <option>Name</option>
-          <option>#Friends</option>
-          <option>City</option>
-          <option>State</option>
-          <option>Country</option>
+        <select class="input-medium" ng-model="attributes"> <!-- bind variables to respective elements using ng-model
+          <option value="name">Name</option>    <!-- add value and make it equal to property on each object, in array to sort by-->
+          <option value="friend_count">#Friends</option>
+          <option value="current_location.city">City</option>
+          <option value="current_location.state">State</option>
+          <option value="current_location.country">Country</option>
         </select>
 
-        <select class="input-medium">
+        <select class="input-medium" ng-model="order">
           <option value="+">Descending</option>
           <option value="-">Ascending</option>
         </select>
@@ -40,7 +40,7 @@
     </form>
     
     <ul>
-      <li class'friend' ng-repeat="friend in friends | filter:searchTerm">
+      <li class'friend' ng-repeat="friend in friends | filter:searchTerm | orderBy:order + attributes:true"> <!-- orderBy order(property name)-->
         <img class="profile-pic" src='{{friend.pic_square}}'>
 
         <h3>{{friend.name}}</h3>
