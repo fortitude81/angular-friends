@@ -1,0 +1,1 @@
+angular.module('angularFriends', []);  //Create an app variable for your angular app 
